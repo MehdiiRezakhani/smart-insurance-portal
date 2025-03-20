@@ -21,10 +21,16 @@ git clone https://github.com/MehdiiRezakhani/smart-insurance-portal.git
 ```
 
 Install dependencies
-```bash npm install````
+
+```bash
+npm install
+```
 
 Start development server
-```bash npm run dev ````
+
+```bash
+npm run dev
+```
 
 ## Features
 
@@ -96,7 +102,3 @@ npm run build
 2. Create a feature branch
 3. Implement changes with tests
 4. Submit pull request with documentation
-
-```
-
-```
