@@ -26,16 +26,16 @@ export const Submissions: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen pt-24 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="min-h-screen pt-24 flex items-center justify-center bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500 dark:border-blue-400"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen pt-24 flex items-center justify-center">
-        <div className="text-center text-red-600">
+      <div className="min-h-screen pt-24 flex items-center justify-center bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+        <div className="text-center text-red-600 dark:text-red-400">
           <p>Error loading applications. Please try again later.</p>
         </div>
       </div>
@@ -43,7 +43,7 @@ export const Submissions: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-24 pb-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
       <div className="max-w-7xl mx-auto">
         <ApplicationList applications={applications?.data || []} />
       </div>

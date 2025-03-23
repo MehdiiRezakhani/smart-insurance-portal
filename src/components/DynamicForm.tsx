@@ -62,8 +62,8 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
       'w-full p-2 border rounded-md transition-colors duration-200',
       'focus:ring-2 focus:ring-blue-500 focus:border-blue-500',
       {
-        'border-red-300': fieldError,
-        'border-gray-300': !fieldError
+        'border-red-300 dark:border-red-500': fieldError,
+        'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100': !fieldError
       }
     );
 
@@ -89,7 +89,7 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
             {fieldError && (
               <p
                 id={`${field.id}-error`}
-                className="text-sm text-red-600"
+                className="text-sm text-red-600 dark:text-red-400"
                 role="alert"
               >
                 {errorMessage}
@@ -112,13 +112,13 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
                   aria-invalid={!!fieldError}
                   aria-describedby={fieldError ? `${field.id}-error` : undefined}
                 />
-                <span>{option}</span>
+                <span className="dark:text-gray-200">{option}</span>
               </label>
             ))}
             {fieldError && (
               <p
                 id={`${field.id}-error`}
-                className="text-sm text-red-600"
+                className="text-sm text-red-600 dark:text-red-400"
                 role="alert"
               >
                 {errorMessage}
@@ -141,7 +141,7 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
             {fieldError && (
               <p
                 id={`${field.id}-error`}
-                className="text-sm text-red-600"
+                className="text-sm text-red-600 dark:text-red-400"
                 role="alert"
               >
                 {errorMessage}
@@ -154,10 +154,10 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)} className="space-y-6">
-      <div className="bg-white p-6 rounded-lg shadow-lg">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg dark:shadow-gray-700/10 transition-colors duration-200">
         <div className="flex items-center space-x-2 mb-6">
-          <ClipboardCheck className="w-6 h-6 text-blue-500" />
-          <h2 className="text-2xl font-bold">{form.title}</h2>
+          <ClipboardCheck className="w-6 h-6 text-blue-500 dark:text-blue-400" />
+          <h2 className="text-2xl font-bold dark:text-white">{form.title}</h2>
         </div>
 
         {status.type && (
@@ -165,8 +165,8 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
             className={clsx(
               'mb-6 p-4 rounded-md flex justify-between items-center',
               {
-                'bg-green-50 text-green-800': status.type === 'success',
-                'bg-red-50 text-red-800': status.type === 'error'
+                'bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-200': status.type === 'success',
+                'bg-red-50 dark:bg-red-900/30 text-red-800 dark:text-red-200': status.type === 'error'
               }
             )}
             role="alert"
@@ -175,7 +175,7 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
             <button
               type="button"
               onClick={dismissStatus}
-              className="text-gray-500 hover:text-gray-700"
+              className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
               aria-label="Dismiss message"
             >
               <X className="w-5 h-5" />
@@ -186,10 +186,10 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
         <div className="space-y-4">
           {form.fields.map((field) => (
             <div key={field.id} className="space-y-1">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
                 {field.label}
                 {field.required && (
-                  <span className="text-red-500 ml-1" aria-hidden="true">
+                  <span className="text-red-500 dark:text-red-400 ml-1" aria-hidden="true">
                     *
                   </span>
                 )}
@@ -205,10 +205,10 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
           className={clsx(
             'mt-6 w-full flex items-center justify-center',
             'py-2 px-4 rounded-md text-white transition-colors',
-            'focus:outline-none focus:ring-2 focus:ring-offset-2',
+            'focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-800',
             {
-              'bg-blue-500 hover:bg-blue-600 focus:ring-blue-500': !isSubmitting,
-              'bg-blue-400 cursor-not-allowed': isSubmitting
+              'bg-blue-500 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-700 focus:ring-blue-500': !isSubmitting,
+              'bg-blue-400 dark:bg-blue-500 cursor-not-allowed': isSubmitting
             }
           )}
         >

@@ -59,7 +59,7 @@ const DraggableRow: React.FC<DraggableRowProps> = ({ id, children }) => {
       ref={setNodeRef}
       style={style}
       {...attributes}
-      className="hover:bg-gray-50 transition-colors duration-200 group"
+      className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors duration-200 group"
     >
       <td className="w-10 px-2 py-4">
         <div {...listeners} className="cursor-grab hover:cursor-grabbing">
@@ -156,10 +156,10 @@ export const ApplicationList: React.FC<Props> = ({ applications }) => {
 
   if (localApplications.length === 0) {
     return (
-      <div className="bg-white rounded-lg shadow-lg p-8">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-700/10 p-8 transition-colors duration-200">
         <div className="text-center">
-          <h2 className="text-xl font-semibold mb-2">No Applications</h2>
-          <p className="text-gray-600">
+          <h2 className="text-xl font-semibold mb-2 dark:text-white">No Applications</h2>
+          <p className="text-gray-600 dark:text-gray-300">
             There are no insurance applications submitted yet.
           </p>
         </div>
@@ -168,22 +168,22 @@ export const ApplicationList: React.FC<Props> = ({ applications }) => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg">
-      <div className="p-4 border-b flex justify-between items-center">
-        <h2 className="text-xl font-semibold">Applications</h2>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-700/10 transition-colors duration-200">
+      <div className="p-4 border-b dark:border-gray-700 flex justify-between items-center">
+        <h2 className="text-xl font-semibold dark:text-white">Applications</h2>
         <div className="flex items-center space-x-4 relative">
           <button
             onClick={() => setIsCustomizing(!isCustomizing)}
-            className="flex items-center space-x-2 text-gray-600 hover:text-gray-900"
+            className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           >
             <Settings2 className="w-5 h-5" />
             <span>Customize Columns</span>
           </button>
 
           {isCustomizing && (
-            <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+            <div className="absolute right-0 top-full mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 transition-colors duration-200">
               <div className="p-4">
-                <h3 className="text-sm font-medium text-gray-900 mb-3">
+                <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-3">
                   Toggle Columns
                 </h3>
                 <div className="space-y-2">
@@ -191,14 +191,15 @@ export const ApplicationList: React.FC<Props> = ({ applications }) => {
                     <label
                       key={column.id}
                       htmlFor={column.id}
-                      className="flex items-center justify-between p-2 hover:bg-gray-50 rounded cursor-pointer"
+                      className="flex items-center justify-between p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded cursor-pointer"
                     >
-                      <span className="text-sm text-gray-700">{column.label}</span>
+                      <span className="text-sm text-gray-700 dark:text-gray-300">{column.label}</span>
                       <input
                         id={column.id}
                         type="checkbox"
                         checked={column.visible}
                         onChange={() => toggleColumn(column.id)}
+                        className="accent-blue-500"
                       />
                     </label>
                   ))}
@@ -217,13 +218,13 @@ export const ApplicationList: React.FC<Props> = ({ applications }) => {
         >
           <table className="w-full">
             <thead>
-              <tr className="bg-gray-50">
+              <tr className="bg-gray-50 dark:bg-gray-700">
                 <th className="w-10"></th>
                 {table.getHeaderGroups()[0].headers.map((header) => (
                   <th
                     key={header.id}
                     onClick={header.column.getToggleSortingHandler()}
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
                   >
                     {flexRender(
                       header.column.columnDef.header,
@@ -233,7 +234,7 @@ export const ApplicationList: React.FC<Props> = ({ applications }) => {
                 ))}
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
               <SortableContext
                 items={localApplications.map(app => app.id)}
                 strategy={verticalListSortingStrategy}
@@ -243,7 +244,7 @@ export const ApplicationList: React.FC<Props> = ({ applications }) => {
                     {row.getVisibleCells().map((cell) => (
                       <td
                         key={cell.id}
-                        className="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                        className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100"
                       >
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </td>

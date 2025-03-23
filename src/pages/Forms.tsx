@@ -30,17 +30,17 @@ export const Forms: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen pt-24 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="min-h-screen pt-24 flex items-center justify-center bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500 dark:border-blue-400"></div>
       </div>
     );
   }
 
   if (!forms) {
     return (
-      <div className="min-h-screen pt-24 flex items-center justify-center">
+      <div className="min-h-screen pt-24 flex items-center justify-center bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
         <div className="text-center">
-          <p className="text-lg text-gray-600">No forms available</p>
+          <p className="text-lg text-gray-600 dark:text-gray-300">No forms available</p>
         </div>
       </div>
     );
@@ -54,20 +54,20 @@ export const Forms: React.FC = () => {
   
   if (filteredForms.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-24 pb-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-lg text-gray-600">No forms found for {currentType} insurance</p>
+          <p className="text-lg text-gray-600 dark:text-gray-300">No forms found for {currentType} insurance</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-24 pb-12 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
       <div className="max-w-3xl mx-auto">
         <button
           onClick={handleReturnHome}
-          className="mb-8 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 group"
+          className="mb-8 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 group"
           aria-label="Return to home page"
         >
           <ArrowLeft className="w-5 h-5 mr-2 transition-transform duration-200 group-hover:-translate-x-1" />
