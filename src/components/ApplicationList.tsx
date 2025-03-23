@@ -26,6 +26,8 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../store/LanguageContext';
 
 interface Props {
   applications: Application[];
@@ -77,6 +79,8 @@ export const ApplicationList: React.FC<Props> = ({ applications }) => {
   const { columns, toggleColumn, reorderApplications } = useStore();
   const columnHelper = createColumnHelper<Application>();
   const [localApplications, setLocalApplications] = useState(applications);
+  const { t } = useTranslation();
+  const { direction } = useLanguage();
 
   React.useEffect(() => {
     setLocalApplications(applications);
@@ -116,9 +120,13 @@ export const ApplicationList: React.FC<Props> = ({ applications }) => {
       activeColumns
         .filter((col) => col.visible)
         .map((col) =>
-          columnHelper.accessor(col.id as keyof Application, {
+          columnHelper.accessor((row) => {
+            const key = col.id as keyof Application;
+            return row[key];
+          }, {
+            id: col.id,
             header: () => (
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 rtl:space-x-reverse">
                 <span>{col.label}</span>
                 <ArrowUpDown className="w-4 h-4" />
               </div>
@@ -158,9 +166,9 @@ export const ApplicationList: React.FC<Props> = ({ applications }) => {
     return (
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-700/10 p-8 transition-colors duration-200">
         <div className="text-center">
-          <h2 className="text-xl font-semibold mb-2 dark:text-white">No Applications</h2>
+          <h2 className="text-xl font-semibold mb-2 dark:text-white">{t('submissions.noApplications')}</h2>
           <p className="text-gray-600 dark:text-gray-300">
-            There are no insurance applications submitted yet.
+            {t('submissions.noApplicationsDesc')}
           </p>
         </div>
       </div>
@@ -170,21 +178,21 @@ export const ApplicationList: React.FC<Props> = ({ applications }) => {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-700/10 transition-colors duration-200">
       <div className="p-4 border-b dark:border-gray-700 flex justify-between items-center">
-        <h2 className="text-xl font-semibold dark:text-white">Applications</h2>
-        <div className="flex items-center space-x-4 relative">
+        <h2 className="text-xl font-semibold dark:text-white">{t('submissions.title')}</h2>
+        <div className="flex items-center space-x-4 rtl:space-x-reverse relative">
           <button
             onClick={() => setIsCustomizing(!isCustomizing)}
-            className="flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+            className="flex items-center space-x-2 rtl:space-x-reverse text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           >
             <Settings2 className="w-5 h-5" />
-            <span>Customize Columns</span>
+            <span>{t('submissions.customizeColumns')}</span>
           </button>
 
           {isCustomizing && (
-            <div className="absolute right-0 top-full mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 transition-colors duration-200">
+            <div className={`absolute ${direction === 'rtl' ? 'left-0' : 'right-0'} top-full mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 transition-colors duration-200`}>
               <div className="p-4">
                 <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-3">
-                  Toggle Columns
+                  {t('submissions.toggleColumns')}
                 </h3>
                 <div className="space-y-2">
                   {activeColumns.map((column) => (
@@ -224,7 +232,7 @@ export const ApplicationList: React.FC<Props> = ({ applications }) => {
                   <th
                     key={header.id}
                     onClick={header.column.getToggleSortingHandler()}
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
+                    className="px-6 py-3 text-left rtl:text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
                   >
                     {flexRender(
                       header.column.columnDef.header,

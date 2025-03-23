@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { InsuranceForm, FormField } from '../types/insurance';
 import { ClipboardCheck, X, Loader2 } from 'lucide-react';
 import { clsx } from 'clsx';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   form: InsuranceForm;
@@ -25,6 +26,7 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
 
   const [status, setStatus] = useState<FormStatus>({ type: null, message: '' });
   const watchedValues = watch();
+  const { t } = useTranslation();
 
   const shouldShowField = (field: FormField): boolean => {
     if (!field.dependsOn) return true;
@@ -37,13 +39,13 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
       await onSubmit(data);
       setStatus({
         type: 'success',
-        message: 'Form submitted successfully!'
+        message: t('forms.formSubmittedSuccess')
       });
       reset();
     } catch (error) {
       setStatus({
         type: 'error',
-        message: 'An error occurred while submitting the form. Please try again.'
+        message: t('forms.formSubmitError')
       });
     }
   };
@@ -73,13 +75,13 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
           <div className="space-y-1">
             <select
               {...register(field.id, {
-                required: field.required ? 'This field is required' : false
+                required: field.required ? t('common.required') : false
               })}
               className={commonClasses}
               aria-invalid={!!fieldError}
               aria-describedby={fieldError ? `${field.id}-error` : undefined}
             >
-              <option value="">Select...</option>
+              <option value="">{t('common.select')}</option>
               {field.options?.map((option) => (
                 <option key={option} value={option}>
                   {option}
@@ -101,11 +103,11 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
         return (
           <div className="space-y-2">
             {field.options?.map((option) => (
-              <label key={option} className="flex items-center space-x-2">
+              <label key={option} className="flex items-center space-x-2 rtl:space-x-reverse">
                 <input
                   type="radio"
                   {...register(field.id, {
-                    required: field.required ? 'This field is required' : false
+                    required: field.required ? t('common.required') : false
                   })}
                   value={option}
                   className="text-blue-500 focus:ring-blue-500"
@@ -132,7 +134,7 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
             <input
               type={field.type}
               {...register(field.id, {
-                required: field.required ? 'This field is required' : false
+                required: field.required ? t('common.required') : false
               })}
               className={commonClasses}
               aria-invalid={!!fieldError}
@@ -155,7 +157,7 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)} className="space-y-6">
       <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg dark:shadow-gray-700/10 transition-colors duration-200">
-        <div className="flex items-center space-x-2 mb-6">
+        <div className="flex items-center space-x-2 rtl:space-x-reverse mb-6">
           <ClipboardCheck className="w-6 h-6 text-blue-500 dark:text-blue-400" />
           <h2 className="text-2xl font-bold dark:text-white">{form.title}</h2>
         </div>
@@ -176,7 +178,7 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
               type="button"
               onClick={dismissStatus}
               className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-              aria-label="Dismiss message"
+              aria-label={t('common.close')}
             >
               <X className="w-5 h-5" />
             </button>
@@ -185,11 +187,11 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
         
         <div className="space-y-4">
           {form.fields.map((field) => (
-            <div key={field.id} className="space-y-1">
+            <div key={field.id} className="space-y-1 text-left rtl:text-right">
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">
                 {field.label}
                 {field.required && (
-                  <span className="text-red-500 dark:text-red-400 ml-1" aria-hidden="true">
+                  <span className="text-red-500 dark:text-red-400 mx-1" aria-hidden="true">
                     *
                   </span>
                 )}
@@ -214,11 +216,11 @@ export const DynamicForm: React.FC<Props> = ({ form, onSubmit }) => {
         >
           {isSubmitting ? (
             <>
-              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-              Submitting...
+              <Loader2 className="w-5 h-5 mr-2 rtl:ml-2 rtl:mr-0 animate-spin" />
+              {t('common.submitting')}
             </>
           ) : (
-            'Submit Application'
+            t('common.submit')
           )}
         </button>
       </div>

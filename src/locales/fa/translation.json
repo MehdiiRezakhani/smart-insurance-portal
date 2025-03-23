@@ -1,0 +1,51 @@
+{
+  "common": {
+    "appName": "پورتال بیمه",
+    "forms": "فرم‌ها",
+    "submissions": "ثبت‌نام‌ها",
+    "loading": "در حال بارگذاری...",
+    "return": "بازگشت به خانه",
+    "submit": "ثبت درخواست",
+    "submitting": "در حال ثبت...",
+    "error": "خطا",
+    "success": "موفقیت",
+    "noData": "بدون داده",
+    "confirm": "تایید",
+    "cancel": "انصراف",
+    "close": "بستن",
+    "select": "انتخاب کنید...",
+    "toggleLang": "English",
+    "darkMode": "حالت تاریک",
+    "lightMode": "حالت روشن",
+    "required": "ضروری"
+  },
+  "home": {
+    "title": "طرح بیمه خود را انتخاب کنید",
+    "subtitle": "نوع بیمه‌ای که به آن علاقه‌مند هستید را انتخاب کنید",
+    "healthInsurance": "بیمه سلامت",
+    "healthDesc": "پوشش کامل سلامت برای شما و خانواده‌تان",
+    "carInsurance": "بیمه خودرو",
+    "carDesc": "از خودروی خود با پوشش جامع ما محافظت کنید",
+    "homeInsurance": "بیمه منزل",
+    "homeDesc": "از خانه و اموال خود محافظت کنید"
+  },
+  "forms": {
+    "noFormsAvailable": "فرمی موجود نیست",
+    "noFormsFound": "فرمی برای بیمه {{type}} یافت نشد",
+    "formSubmittedSuccess": "فرم با موفقیت ارسال شد!",
+    "formSubmitError": "هنگام ارسال فرم خطایی رخ داد. لطفا دوباره تلاش کنید."
+  },
+  "submissions": {
+    "title": "درخواست‌ها",
+    "noApplications": "بدون درخواست",
+    "noApplicationsDesc": "هنوز هیچ درخواست بیمه‌ای ثبت نشده است.",
+    "loadError": "خطا در بارگذاری درخواست‌ها. لطفا بعدا دوباره تلاش کنید.",
+    "customizeColumns": "سفارشی‌سازی ستون‌ها",
+    "toggleColumns": "تغییر وضعیت ستون‌ها"
+  },
+  "notFound": {
+    "title": "صفحه یافت نشد",
+    "message": "صفحه‌ای که به دنبال آن هستید وجود ندارد یا منتقل شده است.",
+    "goHome": "برو به خانه"
+  }
+} 

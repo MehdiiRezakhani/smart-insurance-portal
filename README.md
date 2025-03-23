@@ -48,6 +48,25 @@ npm run dev
 - Dynamic column selection
 - Responsive design
 
+3. **Dark Mode**
+
+- System-preference detection with manual toggle option
+- Persistent theme preference via localStorage
+- Carefully designed color palette for both light and dark themes
+- Smooth transitions between themes
+- Improved readability and reduced eye strain in low-light environments
+
+4. **Localization**
+
+- Multi-language support with English and Persian
+- Right-to-left (RTL) text direction support for Persian
+- Language detection based on browser settings
+- Persistent language preference via localStorage
+- Custom Persian font integration (Vazirmatn)
+- Properly aligned UI elements that adapt to text direction
+- Comprehensive translation system using i18next
+- Easy extensibility for adding more languages
+
 ## Technical Overview
 
 The application follows a modular architecture with clear separation of concerns:
@@ -62,6 +81,8 @@ Key technologies used:
 - React Hook Form for form handling
 - Redux for state management
 - Axios for API communication
+- i18next for localization
+- Tailwind CSS for styling
 
 ## Installation
 

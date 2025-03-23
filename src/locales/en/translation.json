@@ -1,0 +1,51 @@
+{
+  "common": {
+    "appName": "Insurance Portal",
+    "forms": "Forms",
+    "submissions": "Submissions",
+    "loading": "Loading...",
+    "return": "Return to Home",
+    "submit": "Submit Application",
+    "submitting": "Submitting...",
+    "error": "Error",
+    "success": "Success",
+    "noData": "No Data",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "close": "Close",
+    "select": "Select...",
+    "toggleLang": "فارسی",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "required": "Required"
+  },
+  "home": {
+    "title": "Choose Your Insurance Plan",
+    "subtitle": "Select the type of insurance you're interested in",
+    "healthInsurance": "Health Insurance",
+    "healthDesc": "Comprehensive health coverage for you and your family",
+    "carInsurance": "Car Insurance",
+    "carDesc": "Protect your vehicle with our comprehensive coverage",
+    "homeInsurance": "Home Insurance",
+    "homeDesc": "Secure your home and belongings"
+  },
+  "forms": {
+    "noFormsAvailable": "No forms available",
+    "noFormsFound": "No forms found for {{type}} insurance",
+    "formSubmittedSuccess": "Form submitted successfully!",
+    "formSubmitError": "An error occurred while submitting the form. Please try again."
+  },
+  "submissions": {
+    "title": "Applications",
+    "noApplications": "No Applications",
+    "noApplicationsDesc": "There are no insurance applications submitted yet.",
+    "loadError": "Error loading applications. Please try again later.",
+    "customizeColumns": "Customize Columns",
+    "toggleColumns": "Toggle Columns"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go to Home"
+  }
+} 
